@@ -9,13 +9,16 @@ import {
   Pressable,
 } from 'react-native';
 import Task from './src/components/task/task';
-
+type TaskType = {
+  title: string;
+  checked: boolean;
+};
 function App() {
   const [text, setText] = React.useState('');
-  const [tasks, setTasks] = React.useState([]);
+  const [tasks, setTasks] = React.useState<TaskType[]>([]);
   const [isFocused, setIsFocused] = React.useState(false);
   const addElement = () => {
-    var newArray = [...tasks, {title: text}];
+    var newArray = [...tasks, {title: text, checked: false}];
     setTasks(newArray);
     setText('');
     //...taskin içindeki elemanları kopyalıyor
