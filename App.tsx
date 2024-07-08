@@ -1,118 +1,78 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
-import type {PropsWithChildren} from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
   View,
+  Text,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
 } from 'react-native';
+import Task from './src/components/task/task';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+function App() {
+  const [text, onChangeText] = React.useState('Useless Text');
+  console.log(text);
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+    <View style={styles.container}>
+      <View style={styles.task_container}>
+        <View style={styles.top_view}>
+          <Text style={styles.main_title}>Yapılacaklar</Text>
+          <Text style={styles.main_title}>0</Text>
+        </View>
+        <Task title="adc" />
+        <View style={styles.bottom_view}>
+          <TextInput
+            style={styles.search_bar}
+            onChangeText={onChangeText}
+            placeholder="Yapılacak..."
+          />
+          <TouchableOpacity style={styles.button_container}>
+            <Text style={styles.button_title}>Kaydet</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
     </View>
   );
 }
-
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
+export default App;
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  container: {
+    flex: 1,
+    backgroundColor: '#102027',
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  task_container: {
+    flex: 1,
+    margin: 5,
+    justifyContent: 'space-between',
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
+  main_title: {
+    color: '#ffa500',
+    fontSize: 28,
+    fontWeight: 'bold',
+  },
+  top_view: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  bottom_view: {
+    marginBottom: 50,
+    backgroundColor: '#37474f',
+    borderRadius: 10,
+    padding: 10,
+  },
+  search_bar: {
+    color: 'gray',
+  },
+  button_container: {
+    backgroundColor: '#808080',
+    padding: 10,
+    borderRadius: 10,
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  button_title: {
+    color: 'white',
     fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
+    fontSize: 18,
   },
 });
-
-export default App;
