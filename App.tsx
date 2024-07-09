@@ -24,13 +24,16 @@ function App() {
     //...taskin içindeki elemanları kopyalıyor
     //sonra ben yeni bir eleman ekledim textinputtan aldığım değerle =>{ title: text}
   };
+  // const unCheckedTasks = tasks.filter(task => !task.checked);
   console.log(text);
   return (
     <View style={styles.container}>
       <View style={styles.task_container}>
         <View style={styles.top_view}>
           <Text style={styles.main_title}>Soner Yapılacaklar</Text>
-          <Text style={styles.main_title}>{tasks.length}</Text>
+          <Text style={styles.main_title}>
+            {tasks.filter(task => !task.checked).length}
+          </Text>
         </View>
         <FlatList
           data={tasks}
