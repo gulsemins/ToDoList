@@ -30,14 +30,16 @@ function App() {
     <View style={styles.container}>
       <View style={styles.task_container}>
         <View style={styles.top_view}>
-          <Text style={styles.main_title}>Soner Yapılacaklar</Text>
+          <Text style={styles.main_title}> Yapılacaklar</Text>
           <Text style={styles.main_title}>
             {tasks.filter(task => !task.checked).length}
           </Text>
         </View>
         <FlatList
           data={tasks}
-          renderItem={({item}) => <Task title={item.title} />}
+          renderItem={({item}) => (
+            <Task title={item.title} tasks={tasks} setTasks={setTasks} />
+          )}
         />
         <View style={styles.bottom_view}>
           <TextInput
