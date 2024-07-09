@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {View, Text, Pressable} from 'react-native';
-import styles from './task.styles';
+import styles from './Task.styles';
 
 const Task = (props: any) => {
   const [checked, setChecked] = React.useState(false);

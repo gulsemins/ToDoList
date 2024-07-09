@@ -8,7 +8,7 @@ import {
   FlatList,
   Pressable,
 } from 'react-native';
-import Task from './src/components/task/task';
+import Task from './src/components/task/Task';
 type TaskType = {
   title: string;
   checked: boolean;
