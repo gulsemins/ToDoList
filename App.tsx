@@ -29,7 +29,7 @@ function App() {
     <View style={styles.container}>
       <View style={styles.task_container}>
         <View style={styles.top_view}>
-          <Text style={styles.main_title}>Yapılacaklar</Text>
+          <Text style={styles.main_title}>Soner Yapılacaklar</Text>
           <Text style={styles.main_title}>{tasks.length}</Text>
         </View>
         <FlatList
@@ -47,7 +47,7 @@ function App() {
           />
           <Pressable
             onPress={addElement}
-            style={({pressed}) => [
+            style={[
               styles.button_container,
               {
                 backgroundColor: isFocused ? '#ffa500' : '#808080',
