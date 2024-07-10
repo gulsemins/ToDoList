@@ -37,8 +37,13 @@ function App() {
         </View>
         <FlatList
           data={tasks}
-          renderItem={({item}) => (
-            <Task title={item.title} tasks={tasks} setTasks={setTasks} />
+          renderItem={({item, index}) => (
+            <Task
+              title={item.title}
+              tasks={tasks}
+              setTasks={setTasks}
+              index={index}
+            />
           )}
         />
         <View style={styles.bottom_view}>
