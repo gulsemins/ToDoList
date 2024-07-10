@@ -40,8 +40,12 @@ function App() {
           renderItem={({item, index}) => (
             <Task
               title={item.title}
-              tasks={tasks}
-              setTasks={setTasks}
+              //diğerinden farkı statei props olarak vermedik, güncelleme fonksiyonunu verdik
+              toggleChecked={() => {
+                const newTasks = [...tasks];
+                newTasks[index].checked = !item.checked;
+                setTasks(newTasks);
+              }}
               index={index}
             />
           )}

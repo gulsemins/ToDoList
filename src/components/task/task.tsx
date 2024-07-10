@@ -14,12 +14,7 @@ const Task = (props: any) => {
         onPress={() => {
           console.log('pressed');
           setChecked(!checked);
-          // const newTasks = props.tasks.map(task =>
-          //   task.title == props.title ? {...task, checked: !checked} : task,
-          // );
-          const newTasks = [...props.tasks];
-          newTasks[props.index].checked = !checked;
-          props.setTasks(newTasks);
+          props.toggleChecked();
         }}>
         <Text style={[styles.task_title, checked && styles.task_title_checked]}>
           {props.title}
